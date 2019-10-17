@@ -54,7 +54,7 @@ fi
 
 # set proxy variables
 CURL_PROXY=$(fwdproxy-config curl)
-GIT_PROXY="-c https_proxy=http://regional-fwdproxy6-shv-01.rash0.facebook.com:8080"
+GIT_PROXY="-c http.proxy=fwdproxy:8080"
 
 # install pathogen
 if [ -f "$HOME/.vim/autoload/pathogen.vim" ]; then
