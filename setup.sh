@@ -52,9 +52,11 @@ else
   exit 1
 fi
 
-# set proxy variables
+# set curl proxy variables
 CURL_PROXY=$(fwdproxy-config curl)
-GIT_PROXY="-c http.proxy=fwdproxy:8080"
+
+# set git proxy
+git config --global http.proxy fwdproxy:8080
 
 # install pathogen
 if [ -f "$HOME/.vim/autoload/pathogen.vim" ]; then
@@ -70,7 +72,7 @@ if [ -d "$HOME/.vim/bundle/vim-colors-solarized" ]; then
   echo "Vim Solarized is already installed"
 else
   echo "Installing Vim Solarized"
-  eval git $GIT_PROXY clone https://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized
+  git clone https://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized
 fi
 
 # install nerdtree
@@ -78,7 +80,7 @@ if [ -d "$HOME/.vim/bundle/nerdtree" ]; then
   echo "Nerdtree already installed"
 else
   echo "Installing Nerdtree"
-  eval git $GIT_PROXY clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+  git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
 fi
 
 # install nerdcommenter
@@ -86,7 +88,7 @@ if [ -d "$HOME/.vim/bundle/nerdcommenter" ]; then
   echo "nerdcommenter already installed"
 else
   echo "Installing nerdcommenter"
-  eval git $GIT_PROXY clone https://github.com/scrooloose/nerdcommenter.git ~/.vim/bundle/nerdcommenter
+  git clone https://github.com/scrooloose/nerdcommenter.git ~/.vim/bundle/nerdcommenter
 fi
 
 # install vim-fugitive
@@ -94,14 +96,14 @@ if [ -d "$HOME/.vim/bundle/vim-fugitive" ]; then
   echo "vim-fugitive already installed"
 else
   echo "Installing vim-fugitive"
-  eval git $GIT_PROXY clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
+  git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 fi
 
 if [ -d "$HOME/.vim/bundle/ctrlp.vim" ]; then
   echo "ctrlp already installed"
 else
   echo "Installing ctrlp"
-  eval git $GIT_PROXY clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
+  git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
 fi
 
 if [ -d "$HOME/.oh-my-zsh" ]; then
@@ -117,21 +119,21 @@ if [ -d "$ZSH_CUSTOM/themes/powerlevel9k" ]; then
   echo "powerlevel9k already installed"
 else
   echo "Installing powerlevel9k"
-  eval git $GIT_PROXY clone https://github.com/bhilburn/powerlevel9k.git $ZSH_CUSTOM/themes/powerlevel9k
+  git clone https://github.com/bhilburn/powerlevel9k.git $ZSH_CUSTOM/themes/powerlevel9k
 fi
 
 if [ -d "$ZSH_CUSTOM/themes/zsh-autosuggestions" ]; then
   echo "zsh-autosuggestions already installed"
 else
   echo "Installing zsh-autosuggestions"
-  eval git $GIT_PROXY clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 fi
 
 if [ -d "$ZSH_CUSTOM/themes/zsh-syntax-highlighting" ]; then
   echo "zsh-syntax-highlighting already installed"
 else
   echo "Installing zsh-syntax-highlighting"
-  eval git $GIT_PROXY clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 fi
 
 # copy .vimrc from my github
