@@ -8,10 +8,12 @@
 #   Install vim-fugitive
 #   Install ctrlp
 #   Install oh-my-zsh
+#   Install powerlevel9k
+#   Install zsh-autosuggestions
+#   Install zsh-syntax-highlighting
 #   Set .vimrc to https://raw.github.com/ChengLong/configs/master/.vimrc
 #   Set .zsh_aliases to https://raw.github.com/ChengLong/configs/master/.zsh_aliases
 #   Set .zshrc to https://raw.github.com/ChengLong/configs/master/.zshrc
-#   Set pygmalion.zsh-theme to https://raw.github.com/ChengLong/configs/master/pygmalion.zsh-theme
 #   Source .zshrc
 #   Source tmux config
 #
@@ -105,20 +107,36 @@ else
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
+ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
+
+if [ -d "$ZSH_CUSTOM/themes/powerlevel9k" ]; then
+  echo "powerlevel9k already installed"
+else
+  echo "Installing powerlevel9k"
+  git clone https://github.com/bhilburn/powerlevel9k.git $ZSH_CUSTOM/themes/powerlevel9k
+fi
+
+if [ -d "$ZSH_CUSTOM/themes/zsh-autosuggestions" ]; then
+  echo "zsh-autosuggestions already installed"
+else
+  echo "Installing zsh-autosuggestions"
+  git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+fi
+
+if [ -d "$ZSH_CUSTOM/themes/zsh-syntax-highlighting" ]; then
+  echo "zsh-syntax-highlighting already installed"
+else
+  echo "Installing zsh-syntax-highlighting"
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+fi
+
 # copy .vimrc from my github
-curl -LSso ~/.vimrc https://raw.github.com/ChengLong/configs/master/.vimrc
+curl -LSso ~/.vimrc https://raw.github.com/sonicpower/configs/master/.vimrc
 
-# copy aliases
-curl -LSso ~/.zsh_aliases https://raw.github.com/ChengLong/configs/master/.zsh_aliases
+# copy aliases from my github
+curl -LSso $ZSH_CUSTOM/.zsh_aliases https://raw.github.com/sonicpower/configs/master/.zsh_aliases
 
-# copy .zshrc
-curl -LSso ~/.zshrc https://raw.github.com/ChengLong/configs/master/.zshrc
-
-# copy pygmalion.zsh-theme
-curl -LSso ~/.oh-my-zsh/themes/pygmalion.zsh-theme https://raw.github.com/ChengLong/configs/master/pygmalion.zsh-theme
-
-# copy .tmux.conf
-curl -LSso ~/.tmux.conf https://raw.github.com/ChengLong/configs/master/.tmux.conf
+# copy .zshrc from my github
+curl -LSso ~/.zshrc https://raw.github.com/sonicpower/configs/master/.zshrc
 
 source ~/.zshrc
-tmux source-file ~/.tmux.conf
