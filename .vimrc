@@ -80,3 +80,6 @@ autocmd BufWritePre * StripWhitespace
 
 " Ignore files in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+" avoid shell problem in vim with zsh
+echo 'set shell=/bin/zsh\ -l' >> ~/.vimrc
