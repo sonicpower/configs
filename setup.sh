@@ -5,10 +5,8 @@
 #   Install Vim solarized
 #   Install Nerdtree for vim
 #   Install nerdcommenter for vim
-#   Install AutoComplPop
 #   Install vim-fugitive
 #   Install ctrlp
-#   Install vim-better-whitespace
 #   Install oh-my-zsh
 #   Set .vimrc to https://raw.github.com/ChengLong/configs/master/.vimrc
 #   Set .zsh_aliases to https://raw.github.com/ChengLong/configs/master/.zsh_aliases
@@ -85,14 +83,6 @@ else
   git clone https://github.com/scrooloose/nerdcommenter.git ~/.vim/bundle/nerdcommenter
 fi
 
-# install AutoComplPop
-if [ -d "$HOME/.vim/bundle/AutoComplPop" ]; then
-  echo "AutoComplPop already installed"
-else
-  echo "Installing AutoComplPop"
-  git clone https://github.com/vim-scripts/AutoComplPop.git ~/.vim/bundle/AutoComplPop
-fi
-
 # install vim-fugitive
 if [ -d "$HOME/.vim/bundle/vim-fugitive" ]; then
   echo "vim-fugitive already installed"
@@ -106,13 +96,6 @@ if [ -d "$HOME/.vim/bundle/ctrlp.vim" ]; then
 else
   echo "Installing ctrlp"
   git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
-fi
-
-if [ -d "$HOME/.vim/bundle/vim-better-whitespace" ]; then
-  echo "vim-better-whitespace already installed"
-else
-  echo "Installing vim-better-whitespace"
-  git clone https://github.com/ntpeters/vim-better-whitespace.git ~/.vim/bundle/vim-better-whitespace
 fi
 
 if [ -d "$HOME/.oh-my-zsh" ]; then
