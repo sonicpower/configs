@@ -62,7 +62,7 @@ if [ -f "$HOME/.vim/autoload/pathogen.vim" ]; then
 else
   echo "Installing pathogen"
   mkdir -p ~/.vim/autoload ~/.vim/bundle
-  curl $CURL_PROXY -LSso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+  eval curl $CURL_PROXY -LSso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 fi
 
 # install vim solarized
@@ -70,7 +70,7 @@ if [ -d "$HOME/.vim/bundle/vim-colors-solarized" ]; then
   echo "Vim Solarized is already installed"
 else
   echo "Installing Vim Solarized"
-  git $GIT_PROXY clone https://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized
+  eval git $GIT_PROXY clone https://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized
 fi
 
 # install nerdtree
@@ -78,7 +78,7 @@ if [ -d "$HOME/.vim/bundle/nerdtree" ]; then
   echo "Nerdtree already installed"
 else
   echo "Installing Nerdtree"
-  git $GIT_PROXY clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+  eval git $GIT_PROXY clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
 fi
 
 # install nerdcommenter
@@ -86,7 +86,7 @@ if [ -d "$HOME/.vim/bundle/nerdcommenter" ]; then
   echo "nerdcommenter already installed"
 else
   echo "Installing nerdcommenter"
-  git $GIT_PROXY clone https://github.com/scrooloose/nerdcommenter.git ~/.vim/bundle/nerdcommenter
+  eval git $GIT_PROXY clone https://github.com/scrooloose/nerdcommenter.git ~/.vim/bundle/nerdcommenter
 fi
 
 # install vim-fugitive
@@ -94,21 +94,21 @@ if [ -d "$HOME/.vim/bundle/vim-fugitive" ]; then
   echo "vim-fugitive already installed"
 else
   echo "Installing vim-fugitive"
-  git $GIT_PROXY clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
+  eval git $GIT_PROXY clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 fi
 
 if [ -d "$HOME/.vim/bundle/ctrlp.vim" ]; then
   echo "ctrlp already installed"
 else
   echo "Installing ctrlp"
-  git $GIT_PROXY clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
+  eval git $GIT_PROXY clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
 fi
 
 if [ -d "$HOME/.oh-my-zsh" ]; then
   echo "oh-my-zsh already installed"
 else
   echo "Installing oh-my-zsh"
-  sh -c "$(curl $CURL_PROXY -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  sh -c "$(eval curl $CURL_PROXY -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
 ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
@@ -117,30 +117,30 @@ if [ -d "$ZSH_CUSTOM/themes/powerlevel9k" ]; then
   echo "powerlevel9k already installed"
 else
   echo "Installing powerlevel9k"
-  git $GIT_PROXY clone https://github.com/bhilburn/powerlevel9k.git $ZSH_CUSTOM/themes/powerlevel9k
+  eval git $GIT_PROXY clone https://github.com/bhilburn/powerlevel9k.git $ZSH_CUSTOM/themes/powerlevel9k
 fi
 
 if [ -d "$ZSH_CUSTOM/themes/zsh-autosuggestions" ]; then
   echo "zsh-autosuggestions already installed"
 else
   echo "Installing zsh-autosuggestions"
-  git $GIT_PROXY clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+  eval git $GIT_PROXY clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 fi
 
 if [ -d "$ZSH_CUSTOM/themes/zsh-syntax-highlighting" ]; then
   echo "zsh-syntax-highlighting already installed"
 else
   echo "Installing zsh-syntax-highlighting"
-  git $GIT_PROXY clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+  eval git $GIT_PROXY clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 fi
 
 # copy .vimrc from my github
-curl $CURL_PROXY -LSso ~/.vimrc https://raw.github.com/sonicpower/configs/master/.vimrc
+eval curl $CURL_PROXY -LSso ~/.vimrc https://raw.github.com/sonicpower/configs/master/.vimrc
 
 # copy aliases from my github
-curl $CURL_PROXY -LSso $ZSH_CUSTOM/.zsh_aliases https://raw.github.com/sonicpower/configs/master/.zsh_aliases
+eval curl $CURL_PROXY -LSso $ZSH_CUSTOM/.zsh_aliases https://raw.github.com/sonicpower/configs/master/.zsh_aliases
 
 # copy .zshrc from my github
-curl $CURL_PROXY -LSso ~/.zshrc https://raw.github.com/sonicpower/configs/master/.zshrc
+eval curl $CURL_PROXY -LSso ~/.zshrc https://raw.github.com/sonicpower/configs/master/.zshrc
 
 source ~/.zshrc
