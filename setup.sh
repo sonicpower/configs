@@ -98,6 +98,7 @@ else
   git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 fi
 
+# install command-t
 if [ -d "$HOME/.vim/bundle/command-t" ]; then
   echo "command-t already installed"
 else
@@ -105,6 +106,7 @@ else
   git clone https://github.com/wincent/command-t.git ~/.vim/bundle/command-t
 fi
 
+# install oh-my-zsh
 if [ -d "$HOME/.oh-my-zsh" ]; then
   echo "oh-my-zsh already installed"
 else
@@ -114,6 +116,7 @@ fi
 
 ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
 
+# install powerlevel9k
 if [ -d "$ZSH_CUSTOM/themes/powerlevel9k" ]; then
   echo "powerlevel9k already installed"
 else
@@ -121,13 +124,15 @@ else
   git clone https://github.com/bhilburn/powerlevel9k.git $ZSH_CUSTOM/themes/powerlevel9k
 fi
 
-if [ -d "$ZSH_CUSTOM/themes/zsh-autosuggestions" ]; then
+i# install zsh-autosuggestions
+f [ -d "$ZSH_CUSTOM/themes/zsh-autosuggestions" ]; then
   echo "zsh-autosuggestions already installed"
 else
   echo "Installing zsh-autosuggestions"
   git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 fi
 
+# install zsh-syntax-highlighting
 if [ -d "$ZSH_CUSTOM/themes/zsh-syntax-highlighting" ]; then
   echo "zsh-syntax-highlighting already installed"
 else
