@@ -65,6 +65,7 @@ colorscheme solarized
 
 " NerdTree config
 let g:NERDTreeDirArrows=0
+nmap <leader>ne :NERDTreeToggle<cr>
 
 " make backspace work like most other apps
 set backspace=2
@@ -81,8 +82,12 @@ set relativenumber " use relativenumber by default
 " strip whitespace on save
 autocmd BufWritePre * StripWhitespace
 
-" Ignore files in .gitignore
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+"" Command-T
+let g:CommandTMaxHeight = 30
+let g:CommandTMaxFiles = 500000
+let g:CommandTInputDebounce = 200
+let g:CommandTFileScanner = 'watchman'
+let g:CommandTMaxCachedDirectories = 10
+let g:CommandTSmartCase = 1
 
-" avoid shell problem in vim with zsh
-echo 'set shell=/bin/zsh\ -l' >> ~/.vimrc
+set shell=/bin/zsh\ -l
