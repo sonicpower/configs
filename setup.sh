@@ -6,7 +6,6 @@
 #   Install Nerdtree for vim
 #   Install nerdcommenter for vim
 #   Install vim-fugitive
-#   Install ctrlp
 #   Install oh-my-zsh
 #   Install powerlevel9k
 #   Install zsh-autosuggestions
@@ -99,11 +98,11 @@ else
   git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 fi
 
-if [ -d "$HOME/.vim/bundle/ctrlp.vim" ]; then
-  echo "ctrlp already installed"
+if [ -d "$HOME/.vim/bundle/command-t" ]; then
+  echo "command-t already installed"
 else
-  echo "Installing ctrlp"
-  git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
+  echo "Installing command-t"
+  git clone https://github.com/wincent/command-t.git ~/.vim/bundle/command-t
 fi
 
 if [ -d "$HOME/.oh-my-zsh" ]; then
