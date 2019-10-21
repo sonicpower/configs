@@ -6,6 +6,7 @@
 #   Install Nerdtree for vim
 #   Install nerdcommenter for vim
 #   Install vim-fugitive
+#   Install command-t
 #   Install oh-my-zsh
 #   Install powerlevel9k
 #   Install zsh-autosuggestions
