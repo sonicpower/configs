@@ -105,6 +105,11 @@ if [ -d "$HOME/.vim/bundle/command-t" ]; then
 else
   echo "Installing command-t"
   git clone https://github.com/wincent/command-t.git ~/.vim/bundle/command-t
+  sudo yum install ruby ruby-devel
+  cd ~/.vim/bundle/command-t/ruby/command-t/ext/command-t
+  ruby extconf.rb
+  make
+  cd ~
 fi
 
 # install oh-my-zsh
