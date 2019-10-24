@@ -164,4 +164,4 @@ eval curl $CURL_PROXY -LSso $ZSH_CUSTOM/.zsh_aliases https://raw.github.com/soni
 # copy .zshrc from my github
 eval curl $CURL_PROXY -LSso ~/.zshrc https://raw.github.com/sonicpower/configs/master/.zshrc
 
-# source ~/.zshrc
+source ~/.zshrc
