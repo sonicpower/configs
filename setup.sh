@@ -139,8 +139,8 @@ else
   git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 fi
 
-i# install zsh-autosuggestions
-f [ -d "$ZSH_CUSTOM/themes/zsh-autosuggestions" ]; then
+# install zsh-autosuggestions
+if [ -d "$ZSH_CUSTOM/themes/zsh-autosuggestions" ]; then
   echo "zsh-autosuggestions already installed"
 else
   echo "Installing zsh-autosuggestions"
