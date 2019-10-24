@@ -128,7 +128,7 @@ if [ -d "$ZSH_CUSTOM/themes/powerlevel9k" ]; then
   echo "powerlevel9k already installed"
 else
   echo "Installing powerlevel9k"
-  git clone https://github.com/romkatv/powerlevel9k.git $ZSH_CUSTOM/themes/powerlevel9k
+  git clone https://github.com/bhilburn/powerlevel9k.git $ZSH_CUSTOM/themes/powerlevel9k
 fi
 
 # install powerlevel10k
