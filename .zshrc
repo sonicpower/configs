@@ -25,7 +25,7 @@ if [[ "$TERM_PROGRAM" == "nuclide" ]]; then
   ZSH_THEME="af-magic"
   DISABLE_AUTO_TITLE="true"
 else
-  ZSH_THEME="powerlevel9k/powerlevel9k"
+  ZSH_THEME="powerlevel10k/powerlevel10k"
 fi
 
 
