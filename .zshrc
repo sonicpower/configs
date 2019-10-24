@@ -1,93 +1,66 @@
+source /usr/facebook/ops/rc/master.zshrc
+stty stop undef
+
+if [ -f /usr/share/scm/scm-prompt.sh ]; then
+  source /usr/share/scm/scm-prompt.sh
+fi
+
+function parse_hg_branch {
+  if [[ -n $(_dotfiles_scm_info) ]]; then
+    echo "$(_dotfiles_scm_info)"
+  fi
+}
+WANT_OLD_SCM_PROMPT=true
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH="/home/shiy/.oh-my-zsh"
-
+export ZSH=/home/shiy/.oh-my-zsh
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
+if [[ "$TERM_PROGRAM" == "nuclide" ]]; then
+  echo -ne "\033]0;Terminal\007"
+  ZSH_THEME="af-magic"
+  DISABLE_AUTO_TITLE="true"
+else
+  ZSH_THEME="powerlevel9k/powerlevel9k"
+fi
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='red'
+POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='235'
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='245'
+POWERLEVEL9K_CONTEXT_TEMPLATE="%n@%2m"
+#POWERLEVEL9K_MODE='awesome-patched'
+POWERLEVEL9K_FOLDER_ICON='\UF07B'
+POWERLEVEL9K_STATUS_OK_ICON='\UF2B0'
+POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
+POWERLEVEL9K_DIR_HOME_BACKGROUND="green"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="black"
+#POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="47"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="black"
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="51"
+POWERLEVEL9K_CUSTOM_PWD="echo $PWD"
+POWERLEVEL9K_CUSTOM_PWD_BACKGROUND="237"
+POWERLEVEL9K_CUSTOM_PWD_FOREGROUND="247"
+POWERLEVEL9K_CUSTOM_MERCURIAL="parse_hg_branch"
+POWERLEVEL9K_CUSTOM_MERCURIAL_BACKGROUND="22"
+POWERLEVEL9K_CUSTOM_MERCURIAL_FOREGROUND="white"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context custom_mercurial custom_pwd newline dir)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M %Y-%m-%d}"
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(
+  z
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  history-substring-search
+)
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -95,8 +68,53 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 source $ZSH_CUSTOM/.zsh_aliases
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
+
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+bindkey '\e[5~' history-substring-search-up
+bindkey '\e[6~' history-substring-search-down
+
+setopt COMPLETE_IN_WORD
+setopt PROMPT_SUBST
+setopt INC_APPEND_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_NO_DUPS
+HISTSIZE=130000 SAVEHIST=130000
+HISTFILE=~/.zsh-history
+
+WORDCHARS='*?_-[]~\!#$%^(){}<>|`@#$%^*()+:?'
+
+
+# Colors
+autoload -U colors && colors
+#export TERM=xterm-256color
+export CLICOLOR=1
+export LSCOLORS=Gxfxcxdxbxegedabagacad
+
+#hgproml
+function hgproml {
+  local user="%{$fg[green]%}%n"
+  local at="%{$fg[yellow]%}@"
+  local host="%{$fg[green]%}%m"
+
+  export PS1="$user$at$host%{$fg[yellow]%}:\$(parse_hg_branch)%{$reset_color%} "
+  PS2='> '
+  PS4='+ '
+}
+
+if [[ "$TERM_PROGRAM" == "nuclide" ]]; then
+  DISABLE_AUTO_TITLE="true"
+  echo -ne "\033]0;Terminal\007"
+fi
+
+export PRESTO_CLIENT_IDENTITY=$USER
+
 
 # Colorise the top Tabs of Iterm2 with the same color as background
 # Just change the 18/26/33 wich are the rgb values
