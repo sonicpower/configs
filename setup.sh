@@ -140,7 +140,7 @@ else
 fi
 
 # install zsh-autosuggestions
-if [ -d "$ZSH_CUSTOM/themes/zsh-autosuggestions" ]; then
+if [ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]; then
   echo "zsh-autosuggestions already installed"
 else
   echo "Installing zsh-autosuggestions"
@@ -148,7 +148,7 @@ else
 fi
 
 # install zsh-syntax-highlighting
-if [ -d "$ZSH_CUSTOM/themes/zsh-syntax-highlighting" ]; then
+if [ -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
   echo "zsh-syntax-highlighting already installed"
 else
   echo "Installing zsh-syntax-highlighting"
