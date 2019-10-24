@@ -16,6 +16,7 @@ WANT_OLD_SCM_PROMPT=true
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export ZSH=/home/shiy/.oh-my-zsh
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -25,17 +26,17 @@ if [[ "$TERM_PROGRAM" == "nuclide" ]]; then
   ZSH_THEME="af-magic"
   DISABLE_AUTO_TITLE="true"
 else
-  ZSH_THEME="powerlevel10k/powerlevel10k"
+  ZSH_THEME="powerlevel9k/powerlevel9k"
 fi
 
-
+# set up powerlevel9k theme
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 #POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='red'
 POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='235'
 POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='245'
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n@%2m"
 #POWERLEVEL9K_MODE='awesome-patched'
-POWERLEVEL9K_FOLDER_ICON='\UF07B'
+#POWERLEVEL9K_FOLDER_ICON='\UF07B'
 POWERLEVEL9K_STATUS_OK_ICON='\UF2B0'
 POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
 POWERLEVEL9K_DIR_HOME_BACKGROUND="green"
@@ -53,6 +54,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context custom_mercurial custom_pwd newline d
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M %Y-%m-%d}"
 
+# enable plugins
 plugins=(
   z
   zsh-syntax-highlighting
@@ -60,6 +62,7 @@ plugins=(
   history-substring-search
 )
 
+# load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -68,16 +71,17 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 source $ZSH_CUSTOM/.zsh_aliases
 
-
+# set up history search
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[OA" up-line-or-beginning-search
 bindkey "^[OB" down-line-or-beginning-search
-bindkey '\e[5~' history-substring-search-up
-bindkey '\e[6~' history-substring-search-down
+bindkey '^[[5~' history-substring-search-up
+bindkey '^[[6~' history-substring-search-down
 
+# set up zsh options
 setopt COMPLETE_IN_WORD
 setopt PROMPT_SUBST
 setopt INC_APPEND_HISTORY
@@ -86,10 +90,11 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_SAVE_NO_DUPS
 HISTSIZE=130000 SAVEHIST=130000
-HISTFILE=~/.zsh-history
+#HISTFILE=~/.zsh-history
 
-WORDCHARS='*?_-[]~\!#$%^(){}<>|`@#$%^*()+:?'
-
+# by default: export WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>'
+# we take out the slash, period, angle brackets, dash here for word tranversing.
+export WORDCHARS='*?_[]~=&;!#$%^(){}'
 
 # Colors
 autoload -U colors && colors
@@ -113,11 +118,10 @@ if [[ "$TERM_PROGRAM" == "nuclide" ]]; then
   echo -ne "\033]0;Terminal\007"
 fi
 
-export PRESTO_CLIENT_IDENTITY=$USER
-
-
 # Colorise the top Tabs of Iterm2 with the same color as background
 # Just change the 18/26/33 wich are the rgb values
 echo -e "\033]6;1;bg;red;brightness;18\a"
 echo -e "\033]6;1;bg;green;brightness;26\a"
 echo -e "\033]6;1;bg;blue;brightness;33\a"
+
+export PRESTO_CLIENT_IDENTITY=$USER
