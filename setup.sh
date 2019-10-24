@@ -8,6 +8,7 @@
 #   Install vim-fugitive
 #   Install command-t
 #   Install oh-my-zsh
+#   Install powerlevel9k
 #   Install powerlevel10k
 #   Install zsh-autosuggestions
 #   Install zsh-syntax-highlighting
@@ -121,6 +122,14 @@ else
 fi
 
 ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
+
+# install powerlevel9k
+if [ -d "$ZSH_CUSTOM/themes/powerlevel9k" ]; then
+  echo "powerlevel9k already installed"
+else
+  echo "Installing powerlevel9k"
+  git clone https://github.com/romkatv/powerlevel9k.git $ZSH_CUSTOM/themes/powerlevel9k
+fi
 
 # install powerlevel10k
 if [ -d "$ZSH_CUSTOM/themes/powerlevel10k" ]; then
