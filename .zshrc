@@ -90,7 +90,7 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_SAVE_NO_DUPS
 HISTSIZE=130000 SAVEHIST=130000
-#HISTFILE=~/.zsh-history
+HISTFILE=~/.zsh-history
 
 # by default: export WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>'
 # we take out the slash, period, angle brackets, dash here for word tranversing.
