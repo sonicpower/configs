@@ -76,10 +76,10 @@ autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey "^[OA" up-line-or-beginning-search
-bindkey "^[OB" down-line-or-beginning-search
-bindkey '^[[5~' history-substring-search-up
-bindkey '^[[6~' history-substring-search-down
+bindkey "^[OA" up-line-or-beginning-search # up arrow
+bindkey "^[OB" down-line-or-beginning-search # down arrow
+bindkey '^[[5~' history-substring-search-up # alt + up arrow
+bindkey '^[[6~' history-substring-search-down # alt + down arrow
 
 # set up zsh options
 setopt COMPLETE_IN_WORD
